@@ -16,6 +16,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@devcycle/devcycle-react-sdk": "^1.10.1",
     "@mdx-js/react": "^2.3.0",
     "gatsby": "^5.10.0",
     "gatsby-plugin-google-gtag": "^5.10.0",
