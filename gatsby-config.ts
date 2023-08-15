@@ -16,7 +16,10 @@ const config: GatsbyConfig = {
         {
             resolve: 'devcycle',
             options: {
-                sdkKey: process.env.DEVCYCLE_CLIENT_SDK_KEY,
+                sdkKey: {
+                    client: process.env.DEVCYCLE_CLIENT_SDK_KEY,
+                    server: process.env.DEVCYCLE_SERVER_SDK_KEY,
+                }
             },
         },
         'gatsby-plugin-image',
