@@ -152,7 +152,7 @@ const IndexPage: React.FC<PageProps> = ({
                 Congratulations{' '}
                 {showDemoBlock && (
                     <span style={headingAccentStyles}>
-                        DevCycle {showDemoBlock}
+                        DevCycle {showDemoBlock.toString()}
                     </span>
                 )}
                 <br />

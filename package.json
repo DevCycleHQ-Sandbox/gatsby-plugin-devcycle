@@ -16,6 +16,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@devcycle/devcycle-js-sdk": "^1.13.5",
     "@devcycle/devcycle-react-sdk": "^1.10.1",
     "@mdx-js/react": "^2.3.0",
     "dotenv": "^16.3.1",
