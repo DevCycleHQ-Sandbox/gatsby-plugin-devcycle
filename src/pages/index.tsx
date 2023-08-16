@@ -1,6 +1,6 @@
 import * as React from 'react'
 import type { HeadFC, PageProps } from 'gatsby'
-import { useVariableValue } from '@devcycle/devcycle-react-sdk'
+import { useVariableValue } from '@devcycle/react-client-sdk'
 
 const pageStyles = {
     color: '#232129',
@@ -143,16 +143,21 @@ const IndexPage: React.FC<PageProps> = ({
     // given useVariableValue won't be initialized on the server side
     // when this is called, it'll pass to pageContext which will
     // be initialized
-    const showDemoBlock =
-        useVariableValue('gatsby-test', false) ||
-        pageContext['gatsby-test']?.value
+    const showDemoBlock = pageContext['gatsby-test']?.value
+    const showDevCycleVariableValue = useVariableValue('gatsby-test', false) 
     return (
         <main style={pageStyles}>
             <h1 style={headingStyles}>
                 Congratulations{' '}
                 {showDemoBlock && (
-                    <span style={headingAccentStyles}>
-                        DevCycle {showDemoBlock}
+                    <span style={headingAccentStyles} className='pageContextValue'>
+                        DevCycle {showDemoBlock.toString()}
+                    </span>
+                )}
+                <br/>
+                {showDevCycleVariableValue && (
+                    <span style={headingAccentStyles} className='dvcVariableValue'>
+                        DevCycle Variable Value: {showDemoBlock.toString()}
                     </span>
                 )}
                 <br />

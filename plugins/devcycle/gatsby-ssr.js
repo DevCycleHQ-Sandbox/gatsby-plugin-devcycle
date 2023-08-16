@@ -1,19 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withDVCProvider } from '@devcycle/devcycle-react-sdk'
-
-// this ensures that useVariable, used by useVariableValue, knows it's
-// in the DVCProvider, even if it's not initialized and generally useless
-// at this point
+import { withDevCycleProvider } from '@devcycle/react-client-sdk'
 
 export const wrapRootElement = ({ element }, pluginOptions) => {
-    if (!pluginOptions.sdkKey) {
+    const sdkKey = pluginOptions.sdkKey.client
+    if (!sdkKey) {
         console.warn(
             'DevCycle SDK `sdkKey` is not configured. See https://github.com/devcycle/gatsby-plugin-devcycle#installation'
         )
     }
-    const App = () => <>{element}</>
-    const DevCycleApp = withDVCProvider(pluginOptions)(App)
+    const App = () => {
+        return <>{element}</>
+    }
+    const DevCycleApp = withDevCycleProvider({ 
+        sdkKey,
+        options: {
+            logLevel: 'debug'
+        } 
+    })(App)
     return <DevCycleApp />
 }
 wrapRootElement.propTypes = {
